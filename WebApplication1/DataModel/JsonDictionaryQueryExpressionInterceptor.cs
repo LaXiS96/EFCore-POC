@@ -1,14 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore.Diagnostics;
 using System.Linq.Expressions;
-using System.Reflection;
 
 namespace WebApplication1.DataModel
 {
     public class JsonDictionaryQueryExpressionInterceptor : IQueryExpressionInterceptor
     {
-        // TODO we cannot translate the method itself... we need to translate dictionary accesses
-        private static readonly MethodInfo AsJsonDictionaryMethod =
-            typeof(DbFunctionsExtensions).GetMethod(nameof(DbFunctionsExtensions.AsJsonDictionary))!;
+        // TODO translate dictionary access (get_Item, ContainsKey, ?)
 
         public Expression QueryCompilationStarting(
             Expression queryExpression,
@@ -27,13 +24,9 @@ namespace WebApplication1.DataModel
 
             protected override Expression VisitMethodCall(MethodCallExpression node)
             {
-                if (node.Method == AsJsonDictionaryMethod)
-                {
-                    // TODO argument [1] is the json string member access?
-                    //node.Arguments[1]
-
-                    return base.VisitMethodCall(node);
-                }
+                //if (node.Method == AsJsonDictionaryMethod)
+                //{
+                //}
 
                 return base.VisitMethodCall(node);
             }

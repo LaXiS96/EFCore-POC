@@ -10,6 +10,7 @@
             var entities = new Entity[]
             {
                 new() { Id = Guid.NewGuid(), JsonDocument = """{"key1":"value1","Key2":1234}""" },
+                new() { Id = Guid.NewGuid(), JsonDocument = """{"asd":"kek","ROFL":5555}""" },
             };
             context.Entities.AddRange(entities);
             context.SaveChanges();

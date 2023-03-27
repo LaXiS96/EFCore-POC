@@ -8,10 +8,5 @@ namespace WebApplication1.DataModel
         {
             throw new NotImplementedException();
         }
-
-        public static JsonDictionary AsJsonDictionary(this DbFunctions _, string? json)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

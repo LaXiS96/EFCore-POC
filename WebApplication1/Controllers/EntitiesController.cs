@@ -32,9 +32,22 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public IQueryable<ApiModel.Entity> Get()
         {
-            return _context.Entities
+            var query = _context.Entities
                 .AsNoTracking()
                 .ProjectTo<ApiModel.Entity>(_mapper.ConfigurationProvider);
+
+            return query;
+        }
+
+        [HttpGet("filter")]
+        public IQueryable<ApiModel.Entity> GetFilter()
+        {
+            var query = _context.Entities
+                .AsNoTracking()
+                .ProjectTo<ApiModel.Entity>(_mapper.ConfigurationProvider)
+                .Where(entity => entity.Document["key1"].Equals("value1")); // This simulates an OData filter on the dictionary
+
+            return query;
         }
     }
 }

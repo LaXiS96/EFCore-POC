@@ -16,8 +16,7 @@ namespace WebApplication1
                 // https://learn.microsoft.com/en-us/dotnet/api/microsoft.data.sqlclient.sqlconnection.connectionstring
                 options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=WebApplication1;Integrated Security=True");
 
-                options.AddInterceptors(
-                    new JsonDictionaryQueryExpressionInterceptor());
+                options.AddInterceptors(new JsonDictionaryQueryExpressionInterceptor());
             });
 
             builder.Services.AddAutoMapper(config =>
