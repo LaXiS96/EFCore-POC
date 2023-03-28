@@ -7,6 +7,8 @@ namespace WebApplication1
     {
         public static void Main(string[] args)
         {
+            OData.Parser.ParseFilter("test gt 1234 and startswith(banana,'a') or x eq null");
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
